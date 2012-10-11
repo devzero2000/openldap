@@ -241,6 +241,11 @@ fi
 
 # disable LDAP initialization
 LDAPNOINIT=true; export LDAPNOINIT
+# Add libc malloc_check and MALLOC_PERTURB test
+MALLOC_CHECK_=3
+export MALLOC_CHECK_
+MALLOC_PERTURB_="$( expr \( $$ % 255 \) + 1)"
+export MALLOC_PERTURB_
 
 echo "Running ${SCRIPT} for ${BACKEND}..."
 while [ $COUNTER -le $LOOP ]; do
